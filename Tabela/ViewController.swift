@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 
     var array = ["Viana", "Braga", "Barcelos", "Porto"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +33,26 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         cell.textLabel?.text = array[indexPath.row]
         cell.detailTextLabel?.text = "Texto Extra"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editar = UITableViewRowAction(style: .default, title: "Editar"){action,index in
+            print("Editar: " + String(index.row) + " " + self.array[index.row])
+        }
+        editar.backgroundColor = UIColor.blue
+        
+        let delete = UITableViewRowAction(style: .default, title: "Apagar"){action,index in
+            print("Apagar: " + String(index.row) + " " + self.array[index.row])
+        }
+        delete.backgroundColor = UIColor.red
+        
+        let teste = UITableViewRowAction(style: .default, title: "Teste"){action,index in
+            print("Teste: " + String(index.row) + " " + self.array[index.row])
+        }
+        teste.backgroundColor = UIColor.green
+        
+        return [editar, delete, teste]
+        
     }
     
 }
