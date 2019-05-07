@@ -19,23 +19,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U8J-lF-Zoa">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="62" width="375" height="266"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="f3M-Td-O1D"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="IUd-KG-2Tl"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tabela 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJc-pr-rLa">
+                                <rect key="frame" x="156.5" y="33" width="62" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tabela 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1M-4H-ovV">
+                                <rect key="frame" x="155" y="336" width="65" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="eku-qb-lv3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1wT-wG-vHr">
+                                <rect key="frame" x="0.0" y="368" width="375" height="299"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="2Rp-US-syt"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="wL9-xS-cFz"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="U8J-lF-Zoa" secondAttribute="trailing" id="3Gj-cn-CUs"/>
-                            <constraint firstItem="U8J-lF-Zoa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Dty-kB-OlD"/>
-                            <constraint firstItem="U8J-lF-Zoa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M0V-Ch-vCh"/>
-                            <constraint firstItem="U8J-lF-Zoa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qZJ-iM-phZ"/>
+                            <constraint firstItem="U8J-lF-Zoa" firstAttribute="centerX" secondItem="L1M-4H-ovV" secondAttribute="centerX" id="AXq-Yi-9ht"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L1M-4H-ovV" secondAttribute="bottom" constant="301" id="T1G-4x-Wz0"/>
+                            <constraint firstItem="U8J-lF-Zoa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UEx-0H-wN9"/>
+                            <constraint firstItem="KJc-pr-rLa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="WTT-SD-7jg"/>
+                            <constraint firstItem="L1M-4H-ovV" firstAttribute="top" secondItem="U8J-lF-Zoa" secondAttribute="bottom" constant="8" symbolic="YES" id="cn4-si-mec"/>
+                            <constraint firstItem="U8J-lF-Zoa" firstAttribute="top" secondItem="KJc-pr-rLa" secondAttribute="bottom" constant="8" symbolic="YES" id="hAp-Rl-oOV"/>
+                            <constraint firstItem="KJc-pr-rLa" firstAttribute="centerX" secondItem="U8J-lF-Zoa" secondAttribute="centerX" id="iiZ-WL-d8w"/>
+                            <constraint firstAttribute="trailing" secondItem="U8J-lF-Zoa" secondAttribute="trailing" id="oBK-gc-syk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView1" destination="U8J-lF-Zoa" id="sLn-cY-Qvy"/>
+                        <outlet property="tableView2" destination="1wT-wG-vHr" id="o0B-VY-juA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

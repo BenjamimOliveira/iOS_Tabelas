@@ -11,11 +11,17 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 
     var array = ["Viana", "Braga", "Barcelos", "Porto"]
+    var arrayB = [false, false, false, false, false]
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    //MARK: Atributtes
+    
+    @IBOutlet weak var tableView1: UITableView!
+    @IBOutlet weak var tableView2: UITableView!
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,31 +35,74 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
-        cell.textLabel?.text = array[indexPath.row]
-        cell.detailTextLabel?.text = "Texto Extra"
-        return cell
+        
+        if tableView == tableView1{
+                cell.textLabel?.text = array[indexPath.row]
+                cell.detailTextLabel?.text = "Texto Extra"
+                return cell
+        }
+        
+        if tableView == tableView2{
+            cell.textLabel?.text = array[indexPath.row]
+            cell.detailTextLabel?.text = "Texto Extra da segunda"
+            //cell.accessoryType = UITableViewCellAccessoryType.detailDisclosureButton
+            //cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            if arrayB[indexPath.row] {
+                cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryType.none
+            }
+            return cell
+        }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editar = UITableViewRowAction(style: .default, title: "Editar"){action,index in
+        
+        if tableView == tableView1{let editar = UITableViewRowAction(style: .default, title: "Editar"){action,index in
             print("Editar: " + String(index.row) + " " + self.array[index.row])
+            }
+            editar.backgroundColor = UIColor.blue
+            let delete = UITableViewRowAction(style: .default, title: "Apagar"){action,index in
+                print("Apagar: " + String(index.row) + " " + self.array[index.row])
+            }
+            delete.backgroundColor = UIColor.red
+            let teste = UITableViewRowAction(style: .default, title: "Teste"){action,index in
+                print("Teste: " + String(index.row) + " " + self.array[index.row])
+            }
+            teste.backgroundColor = UIColor.green
+            return [editar, delete, teste]
         }
-        editar.backgroundColor = UIColor.blue
-        
-        let delete = UITableViewRowAction(style: .default, title: "Apagar"){action,index in
-            print("Apagar: " + String(index.row) + " " + self.array[index.row])
+            
+            return [UITableViewRowAction(), UITableViewRowAction()]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if arrayB[indexPath.row] {
+            tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
+            arrayB[indexPath.row] = false
+        } else {
+            tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
+            arrayB[indexPath.row] = true
         }
-        delete.backgroundColor = UIColor.red
-        
-        let teste = UITableViewRowAction(style: .default, title: "Teste"){action,index in
-            print("Teste: " + String(index.row) + " " + self.array[index.row])
+        verifyChosen()
+    }
+    
+    func verifyChosen(){
+        print("---------")
+        for index in 0...arrayB.count-1 {
+            if arrayB[index]{
+                print(array[index])
+            }
         }
-        teste.backgroundColor = UIColor.green
-        
-        return [editar, delete, teste]
-        
     }
     
 }
+
+
+
+
 
