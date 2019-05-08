@@ -52,13 +52,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         if tableView == tableView2{
             cell.textLabel?.text = array[indexPath.row]
             cell.detailTextLabel?.text = "Texto Extra da segunda"
-            //cell.accessoryType = UITableViewCellAccessoryType.detailDisclosureButton
+            cell.accessoryType = UITableViewCellAccessoryType.detailDisclosureButton
             //cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            if arrayB[indexPath.row] {
-                cell.accessoryType = UITableViewCellAccessoryType.checkmark
-            } else {
-                cell.accessoryType = UITableViewCellAccessoryType.none
-            }
+            //if arrayB[indexPath.row] {
+                //cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            //} else {
+              //  cell.accessoryType = UITableViewCellAccessoryType.none
+            //}
             return cell
         }
         
@@ -97,12 +97,27 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if arrayB[indexPath.row] {
-            tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
-            arrayB[indexPath.row] = false
+        if tableView == tableView1{
+            if arrayB[indexPath.row] {
+                tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
+                arrayB[indexPath.row] = false
+            } else {
+                tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
+                arrayB[indexPath.row] = true
+            }
         } else {
-            tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
-            arrayB[indexPath.row] = true
+            
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        if tableView == tableView2 {
+            let alert = UIAlertController(title: "Alert", message: array[indexPath.row], preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            print(indexPath.row)
         }
     }
     
@@ -113,6 +128,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 print(array[index])
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "segue1", sender: tableView2)
     }
 
 }
