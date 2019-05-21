@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 
-    var array = ["Viana", "Braga", "Barcelos", "Porto"]
+    var array = ["Viana", "Braga", "Barcelos"]
     var arrayB = [false, false, false, false, false]
     
     override func viewDidLoad() {
@@ -142,6 +142,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
         
         
+    }
+    
+    //MARK: Unwind
+    @IBAction func unwindFromGravar(segue: UIStoryboardSegue){
+        let details = segue.source as! VCNovo_Elem
+        let cidade:String = details.txtCidade.text!
+        print(cidade)
+        array.append(cidade)
+        tableView1.reloadData()
+        tableView2.reloadData()
     }
 
 }

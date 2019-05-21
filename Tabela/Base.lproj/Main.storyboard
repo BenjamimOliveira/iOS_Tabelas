@@ -30,7 +30,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tabela 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJc-pr-rLa">
-                                <rect key="frame" x="157" y="76" width="62" height="21"/>
+                                <rect key="frame" x="156.5" y="76" width="62" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -84,9 +84,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cidades" id="vq5-sh-YBC">
-                        <barButtonItem key="rightBarButtonItem" title="Validar" id="f40-pF-BCw">
+                        <barButtonItem key="rightBarButtonItem" title="Novo" id="f40-pF-BCw">
                             <connections>
                                 <action selector="butActionValidar:" destination="BYZ-38-t0r" id="z0E-t4-Qom"/>
+                                <segue destination="2fC-9u-ZDa" kind="show" id="O0W-hS-f4e"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -113,6 +114,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cN0-60-DSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1343" y="117"/>
+        </scene>
+        <!--Novo Elem-->
+        <scene sceneID="JFx-7K-z66">
+            <objects>
+                <viewController id="2fC-9u-ZDa" customClass="VCNovo_Elem" customModule="Tabela" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qwm-2D-qHJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7IQ-vn-Lxk">
+                                <rect key="frame" x="8" y="593" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Luu-FT-rm0">
+                                <rect key="frame" x="16" y="86" width="197" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gMA-Bl-FwB"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="gravar" width="404.5" id="WUW-pg-zsQ">
+                            <connections>
+                                <segue destination="vgg-b0-8NQ" kind="unwind" unwindAction="unwindFromGravarWithSegue:" id="ub4-Yf-S0Y"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="txtCidade" destination="Luu-FT-rm0" id="DhX-gi-3Vz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ys6-ae-GW5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vgg-b0-8NQ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1341.5999999999999" y="-641.82908545727139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qYi-Oa-Wzp">
