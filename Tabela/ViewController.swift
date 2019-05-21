@@ -83,6 +83,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         } else {
             let editar = UITableViewRowAction(style: .default, title: "Editar"){action,index in
                 print("Editar: " + String(index.row) + " " + self.array[index.row])
+                self.performSegue(withIdentifier: "segue1", sender: indexPath)
             }
             
             editar.backgroundColor = UIColor.blue
@@ -106,7 +107,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 arrayB[indexPath.row] = true
             }
         } else {
-            
         }
         
     }
@@ -131,7 +131,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "segue1", sender: tableView2)
+        //self.performSegue(withIdentifier: "segue1", sender: tableView2)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segue1") {
+            let idx = sender as! IndexPath
+            let vcdetalhe = (segue.destination as! VCDetalhe)
+            vcdetalhe.cidade = array[idx.row]
+        }
+        
+        
     }
 
 }

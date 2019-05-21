@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="608.79999999999995" y="116.49175412293854"/>
         </scene>
-        <!--View Controller-->
+        <!--Detalhe-->
         <scene sceneID="RLI-nR-jXU">
             <objects>
-                <viewController id="Izk-5W-gd9" sceneMemberID="viewController">
+                <viewController id="Izk-5W-gd9" customClass="VCDetalhe" customModule="Tabela" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hgC-lN-pfA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
