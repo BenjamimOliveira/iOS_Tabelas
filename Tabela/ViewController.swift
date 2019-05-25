@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 //cell.accessoryType = UITableViewCellAccessoryType.checkmark
             //} else {
               //  cell.accessoryType = UITableViewCellAccessoryType.none
-            //}
+            //} 
             return cell
         }
         
@@ -89,6 +89,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             editar.backgroundColor = UIColor.blue
             let delete = UITableViewRowAction(style: .default, title: "Apagar"){action,index in
                 print("Apagar: " + String(index.row) + " " + self.array[index.row])
+                self.array.remove(at: index.row)
+                self.tableView2.reloadData()
             }
             delete.backgroundColor = UIColor.red
             return [editar, delete]
@@ -137,8 +139,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "segue1") {
             let idx = sender as! IndexPath
-            let vcdetalhe = (segue.destination as! VCDetalhe)
-            vcdetalhe.cidade = array[idx.row]
+            let vcnovo = (segue.destination as! VCDetalhe)
+            vcnovo.cidade = array[idx.row]
+            vcnovo.idCidade = idx.row
         }
         
         
@@ -146,9 +149,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     
     //MARK: Unwind
     @IBAction func unwindFromGravar(segue: UIStoryboardSegue){
-        let details = segue.source as! VCNovo_Elem
-        let cidade:String = details.txtCidade.text!
+            let details = segue.source as! VCNovo_Elem
+            let cidade:String = details.txtCidade.text!
+            print(cidade)
+            array.append(cidade)
+            tableView1.reloadData()
+            tableView2.reloadData()
+    }
+    
+    @IBAction func unwindFromUpdate(segue: UIStoryboardSegue){
+        let details = segue.source as! VCDetalhe
+        let cidade:String = details.txt1.text!
         print(cidade)
+        array.remove(at: details.idCidade)
         array.append(cidade)
         tableView1.reloadData()
         tableView2.reloadData()
